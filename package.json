@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "lodash": "^4.17.10",
     "typescript": "^3.0.1"
   },
   "scripts": {
@@ -8,12 +9,11 @@
     "watch:ts": "tsc -w",
     "watch:js": "env NODE_PATH=./dist nodemon --delay 2 --watch dist dist/index.js",
     "build": "env NODE_PATH=./src ./node_modules/.bin/tsc",
-    "watch:ts": "tsc -w",
-    "build": "env NODE_PATH=./src ./node_modules/.bin/tsc",
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.116",
     "@types/node": "^10.5.8",
     "nodemon": "^1.18.3",
     "npm-run-all": "^4.1.3",

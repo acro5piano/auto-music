@@ -1,3 +1,63 @@
-console.log('hello ts')
-console.log('hello ts')
-console.log('hello ts')
+import * as _ from 'lodash'
+
+const notes = {
+  G: {
+    3: 'B',
+    5: 'D',
+    6: 'E',
+    9: 'A',
+  },
+  A: {
+    3: 'C#',
+    5: 'E',
+    6: 'F#',
+    9: 'B',
+  },
+  Bm: {
+    3: 'D',
+    5: 'F#',
+    6: 'G',
+    9: 'C#',
+  },
+}
+
+const codes = ['Bm', 'G', 'Bm', 'A']
+
+type Code = keyof typeof notes
+
+// const probability = {
+//   3: 0.3,
+//   5: 0.3,
+//   6: 0.1,
+//   9: 0.3,
+// }
+
+const getNotesFromCodeWithProb = (note: any) => {
+  const dice = Math.floor(Math.random() * 10)
+  if (dice < 3) {
+    return note['3']
+  }
+  if (dice < 6) {
+    return note['5']
+  }
+  if (dice < 7) {
+    return note['6']
+  }
+  return note['9']
+}
+
+const getNoteFromCode = (code: Code) => getNotesFromCodeWithProb(notes[code])
+
+const getMelodyFromCode = (code: Code) =>
+  Array(2)
+    .fill(0)
+    .map(() => getNoteFromCode(code))
+
+console.log('1:')
+console.log(codes.map(c => getMelodyFromCode(c as Code)))
+console.log('2:')
+console.log(codes.map(c => getMelodyFromCode(c as Code)))
+console.log('3:')
+console.log(codes.map(c => getMelodyFromCode(c as Code)))
+console.log('4:')
+console.log(codes.map(c => getMelodyFromCode(c as Code)))
