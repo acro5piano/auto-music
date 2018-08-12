@@ -21,8 +21,8 @@ const notes: Notes = {
   A: {
     3: 'C#',
     5: 'E',
-    6: 'F#',
-    7: 'G#',
+    6: 'G',
+    7: 'C#',
     9: 'B',
   },
   Bm: {
@@ -34,8 +34,8 @@ const notes: Notes = {
   },
 }
 
-const codes = ['Bm', 'G', 'Bm', 'A']
-// const codes = ['G', 'A', 'Bm', 'Bm']
+// const codes = ['Bm', 'G', 'Bm', 'A']
+const codes = ['G', 'A', 'Bm', 'Bm']
 
 type Code = keyof typeof notes
 
