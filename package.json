@@ -2,6 +2,12 @@
   "dependencies": {
     "typescript": "^3.0.1"
   },
+  "scripts": {
+    "start": "npm run build && node dist/index.js",
+    "build": "env NODE_PATH=./src ./node_modules/.bin/tsc",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json"
+  },
   "devDependencies": {
     "@types/node": "^10.5.8",
     "prettier": "^1.14.2",
