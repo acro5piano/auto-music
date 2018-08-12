@@ -1,27 +1,41 @@
 import * as _ from 'lodash'
 
-const notes = {
+// const possibleNotes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B' ]
+
+interface Notes {
+  [key: string]: NoteForCode
+}
+
+interface NoteForCode {
+  [relative: number]: string
+}
+
+const notes: Notes = {
   G: {
     3: 'B',
     5: 'D',
     6: 'E',
+    7: 'F#',
     9: 'A',
   },
   A: {
     3: 'C#',
     5: 'E',
     6: 'F#',
+    7: 'G#',
     9: 'B',
   },
   Bm: {
     3: 'D',
     5: 'F#',
     6: 'G',
+    7: 'A',
     9: 'C#',
   },
 }
 
 const codes = ['Bm', 'G', 'Bm', 'A']
+// const codes = ['G', 'A', 'Bm', 'Bm']
 
 type Code = keyof typeof notes
 
@@ -32,18 +46,21 @@ type Code = keyof typeof notes
 //   9: 0.3,
 // }
 
-const getNotesFromCodeWithProb = (note: any) => {
+const getNotesFromCodeWithProb = (note: NoteForCode) => {
   const dice = Math.floor(Math.random() * 10)
   if (dice < 3) {
-    return note['3']
+    return note[3]
+  }
+  if (dice < 5) {
+    return note[5]
   }
   if (dice < 6) {
-    return note['5']
+    return note[6]
   }
-  if (dice < 7) {
-    return note['6']
+  if (dice < 8) {
+    return note[7]
   }
-  return note['9']
+  return note[9]
 }
 
 const getNoteFromCode = (code: Code) => getNotesFromCodeWithProb(notes[code])
